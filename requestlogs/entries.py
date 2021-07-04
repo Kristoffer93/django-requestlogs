@@ -19,7 +19,7 @@ class RequestHandler(object):
 
     @property
     def data(self):
-        return remove_secrets(self.request.POST)
+        return "-"
 
     @property
     def query_params(self):
@@ -37,7 +37,7 @@ class RequestHandler(object):
 class DRFRequestHandler(RequestHandler):
     @property
     def data(self):
-        return remove_secrets(self.request.data)
+        return "-"
 
     @property
     def query_params(self):
@@ -54,10 +54,7 @@ class ResponseHandler(object):
 
     @property
     def data(self):
-        data = getattr(self.response, 'data', None)
-        if isinstance(data, dict):
-            return remove_secrets(data)
-        return data
+        return "-"
 
 
 class RequestLogEntry(object):
